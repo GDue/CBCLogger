@@ -50,6 +50,7 @@ This is done by adding another filter to all appenders which are only used by de
 In this example we modify the root logger by adding two appenders. The console appender should show standard behavior, the ThreadLoggingAppender should work on a per call basis.
 Note the filters added to the system and to the console appender.
 
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="warn">
 <filters>
@@ -72,13 +73,15 @@ Note the filters added to the system and to the console appender.
     <AppenderRef ref= "threadAppender" /> 
 </Root>
 </Loggers>
-</Configuration>";
+</Configuration>
+```
 
 The system level filter will control the log level while the filter at the appender will suppress unwanted logging to the console.
 
 ## Setting up a thread for logging
 To do logging for a thread we need to communicate our wishes to the log4j2 system. This is done by creating a ThreadLoggingData-object and fill it according to your wishes.
 
+```java
 		// Create a thread logging object
 		tld=new ThreadLoggingData();
 		
@@ -109,7 +112,7 @@ To do logging for a thread we need to communicate our wishes to the log4j2 syste
 		// Also remember to unregister the ThreadLoggingData to avoid memory leaks.
 		// Consider doing this in the finally block of a try/catch construct to ensure, 
 		// unregistering is performed, no matter what.
-		
+```	
 
 ## More processing
 Somehow you need to convey your logging needs through your call. But it's up to you to do this as this lib has no knowledge of your requests.
