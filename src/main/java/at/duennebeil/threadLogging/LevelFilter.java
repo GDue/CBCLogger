@@ -67,6 +67,8 @@ public final class LevelFilter extends AbstractFilter {
     	String loggerName=logger.getName();
 
     	Level levelThreadLogger=tld.getLoggerLevel(loggerName);
+    	if (levelThreadLogger==null)
+    		return Result.NEUTRAL;
     	
     	
     	if (levelThreadLogger.isLessSpecificThan(levelOfEvent))

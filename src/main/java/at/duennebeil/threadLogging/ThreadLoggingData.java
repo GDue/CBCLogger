@@ -4,6 +4,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.UUID;
 
 import org.apache.logging.log4j.Level;
@@ -60,6 +61,14 @@ public class ThreadLoggingData {
 		loggerLevel.put(logger, level);
 	}
 
+	public void setAllLoggerLevels(Map<String, String> logging) {
+		for (Entry<String, String> e : logging.entrySet()) {
+			setLoggerLevel(e.getKey(), e.getValue());
+		}
+	}
+	
+
+	
 	public Level getLoggerLevel(String loggerName) {
 		
 		while (true) {
@@ -79,5 +88,5 @@ public class ThreadLoggingData {
 		}
 		
 	}
-	
+
 }
